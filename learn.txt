@@ -1,0 +1,41 @@
+DAY=1
+
+Django is open source framework=collection of modules and tools which we use for development
+
+
+ORM=object relational mapping for database queriese
+crud
+authentication backend=validates all the users
+password encryption
+
+
+importance
+1.easy to learn
+2.community support
+3.DRY principle
+4.Scalable and reliable
+
+virtual environment
+
+
+python -m venv env
+env/Scripts/activate 
+
+django-admin startproject first .
+
+
+1.manage.py=for running development server
+2.__init.py=python package 
+3.wsgi=web server  gateway interface
+4.asgi=asynchronous server gateway interface
+5.urls.py=universal resource locator =provides address of resource
+6.settings.py=configurations
+
+
+
+DAY=2
+
+###Django Follows the MVT design pattern==Model View Template  
+##URls and http response
+##Django Template
+##Django bootstrap=bootstrap is the html,css and js framework that can be used for creating responsive and mobile first applications
