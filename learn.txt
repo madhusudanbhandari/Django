@@ -39,3 +39,19 @@ DAY=2
 ##URls and http response
 ##Django Template
 ##Django bootstrap=bootstrap is the html,css and js framework that can be used for creating responsive and mobile first applications
+##Django Static files==images,js,css
+  STATIC_URL='static/'
+  STATIC_ROOT=BASE_DIR/'static'
+  STATICFILES_DIRS={
+    'first/static',
+  }
+
+##Python app==python manage.py startapp name
+##python admin panel=to create= python manage.py createsuperuser
+##Django model==python manage.py makemigrations
+                python manage.py  migrate
+
+                uploading images=
+                +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+##Migration=
