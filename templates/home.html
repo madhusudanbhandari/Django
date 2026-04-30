@@ -27,7 +27,7 @@
             {% for emp in employees %}
             <tr>
             <th scope="row">{{emp.id}}</th>
-            <td>{{emp.first_name}} {{emp.last_name}}</td>
+            <td> <a href="{% url 'employee_detail' emp.id %}" >{{emp.first_name}} {{emp.last_name}}</a></td>
             <td>{{emp.designation}}</td>
             <td>{{emp.phone}}</td>
             </tr>
