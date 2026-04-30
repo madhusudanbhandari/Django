@@ -55,3 +55,12 @@ DAY=2
                 +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 ##Migration=
+
+
+
+DAY3==
+
+##Fetch data from the database
+
+{% these are the template tags %}
+{{ these are the template variables }}

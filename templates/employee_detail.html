@@ -13,31 +13,21 @@
 </head>
 <body>
     <div class="container pt-5">
-      <h1>Employee List</h1>
-        <table class="table">
-         <thead>
-            <tr>
-            <th scope="col">S.N</th>
-            <th scope="col">Full Name</th>
-            <th scope="col">Designation</th>
-            <th scope="col">Phone</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for emp in employees %}
-            <tr>
-            <th scope="row">{{emp.id}}</th>
-            <td>{{emp.first_name}} {{emp.last_name}}</td>
-            <td>{{emp.designation}}</td>
-            <td>{{emp.phone}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        </table>
-            
-        <img src="{%static 'images/logo.jpg' %}" alt="" width="40">
-
+        
+        <div class="card mx auto" style="width: 18rem;">
+        <img class="card-img-top" src="{{ employee.photo.url }}" alt="Employee Photo">
+        <div class="card-body">
+        <p class="card-text">{{employee.first_name}} {{employee.last_name}}</p>
+        <p class="card-text">{{employee.designation}}</p>
+        <p class="card-text">{{employee.email_address}}</p>
+        <p class="card-text">{{employee.phone}}</p>
     </div>
+    <a href="{% url 'home' %}" class="btn btn-primary">Back to home</a>
+
+</div>
+
+            
+</div>
 
     
 
