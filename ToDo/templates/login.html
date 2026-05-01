@@ -7,5 +7,19 @@
 </head>
 <body>
     <h1>Please login</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+            <label for="">Username</label>
+            <input type="text" placeholder="Enter Username" name="username">
+
+        </div>
+
+        <div>
+            <label for="">Password</label>
+            <input type="text" placeholder="Enter Password" name="password">
+        </div>
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>
