@@ -64,3 +64,14 @@ DAY3==
 
 {% these are the template tags %}
 {{ these are the template variables }}
+
+##Show the data on the table
+
+##Fetch employee details
+
+
+
+DAY=4===
+
+
+TODO app
