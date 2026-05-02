@@ -4,22 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+   <style>
+        body{
+            font-family: Arial;
+            background-color: #f2f2f2;
+        }
+
+        .form-container{
+            width: 300px;
+            margin: 60px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        input{
+            width: 95%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid gray;
+        }
+
+        button{
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: darkblue;
+        }
+    </style>
 </head>
 <body>
-    <h1>Please login</h1>
-
+    <h1 style="text-align: center;padding-top: 20px;">Please login</h1>
+    <div class="form-container">
     <form action="" method="POST">
         {% csrf_token %}
+        <div>
             <label for="">Username</label>
             <input type="text" placeholder="Enter Username" name="username">
 
         </div>
-
+           <br>
         <div>
             <label for="">Password</label>
             <input type="text" placeholder="Enter Password" name="password">
         </div>
         <button type="submit">Login</button>
+            
+        <div>
+            <p>If not registerd then </p>
+            <a href="{% url 'register' %}">Register</a>
+        </div>
     </form>
+    </div>
 </body>
 </html>
