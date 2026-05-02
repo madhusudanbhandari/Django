@@ -3,13 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo App</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#f4f7fb;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            padding:20px;
+        }
+
+        .container{
+            width:100%;
+            max-width:600px;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:25px;
+            color:#333;
+        }
+
+        form{
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+        }
+
+        .form-group{
+            display:flex;
+            flex-direction:column;
+        }
+
+        label{
+            margin-bottom:8px;
+            font-weight:bold;
+            color:#444;
+        }
+
+        input,
+        textarea,
+        select{
+            width:100%;
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:15px;
+            outline:none;
+        }
+
+        textarea{
+            min-height:100px;
+            resize:vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus{
+            border-color:#4a90e2;
+        }
+
+        .checkbox{
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+
+        button{
+            background:#4a90e2;
+            color:white;
+            border:none;
+            padding:14px;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#357bd8;
+        }
+
+        @media(max-width:600px){
+
+            .container{
+                padding:20px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 <body>
-    <div>
-        {{task}}
+
+    <div class="container">
+
+        <h1>Add New Task</h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Task Name</label>
+                {{ form.task }}
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                {{ form.description }}
+            </div>
+
+            <div class="form-group">
+                <label>Due Date</label>
+                {{ form.due_date }}
+            </div>
+
+            <div class="form-group">
+                <label>Priority</label>
+                {{ form.priority }}
+            </div>
+
+            <div class="checkbox">
+                {{ form.is_completed }}
+                <label>Completed</label>
+            </div>
+
+            <button type="submit">
+                Add Task
+            </button>
+
+        </form>
+
+        <div class="box">
+            <h2>Pending Task</h2>
+
+            {% for task in pending_task %}
+            <div class="task">
+                <h3>{{task.task}}</h3>
+                <p>{{task.description}} </p>
+                <small class="pending">Pending</small>
+            </div>
+            {% empty %}
+            <p>No pending Task</p>
+            {% endfor %}
+
+        </div>
+
+        <div class="box">
+            <h2>Completed Task</h2>
+            {% for task in completed_task %}
+            <div class="box">
+                <h3>{{task.task}}</h3>
+                <p>{{task.description}}</p>
+                <small class="completed">Completed</small>
+            </div>
+            {% empty %}
+            <p>No completed tasks</p>
+            {% endfor %}
+        </div>
+
     </div>
-    <h1>This is a home page</h1>
-    <a href="{% url 'logout' %}">Logout</a>
+
 </body>
 </html>

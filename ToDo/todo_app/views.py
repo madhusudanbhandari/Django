@@ -1,13 +1,25 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import RegisterForm
+from .forms import TaskForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 @login_required
 def home(request):
-    return render(request,"home.html")
+
+    if request.method == "POST":
+        form = TaskForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    else:
+        form = TaskForm()
+
+    return render(request, "home.html", {'form': form})
 
 def register_view(request):
     if request.method=="POST":
