@@ -2,13 +2,14 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import RegisterForm
 from .forms import TaskForm
+from .models import Task
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 @login_required
 def home(request):
-
+    form=TaskForm()
     if request.method == "POST":
         form = TaskForm(request.POST)
 
@@ -16,10 +17,12 @@ def home(request):
             form.save()
             return redirect('/')
 
-    else:
-        form = TaskForm()
+    pending_task=Task.objects.filter(is_completed=False)
+    completed_task=Task.objects.filter(is_completed=True)
 
-    return render(request, "home.html", {'form': form})
+    return render(request, "home.html", {'form': form,
+                                         'pending_task':pending_task,
+                                         'completed_task':completed_task})
 
 def register_view(request):
     if request.method=="POST":
