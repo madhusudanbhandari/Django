@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from students.models import student
 
 # Create your views here.
 def studentsView(request):
-    students={
-        'id':2, 'name':'sita', 'age':43
-    }
-    return JsonResponse(students)
+    students=student.objects.all()
+    students_list=list(students.values())
+    return JsonResponse(students_list,safe=False)

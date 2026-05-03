@@ -1,0 +1,34 @@
+Api=Application Programming Interface==2 way communication between frontennd and backend
+DRF=Django Rest Framework is build on top of django framework to create Web Apis
+
+
+Rest Api=  Representational State Transfer==organizes how web apps communicate with each other, separating the frontend from the backend
+
+Core principles of Rest:
+    1.Stateless
+    2.Client-Server Architecture
+    3.Standardized Interface: GET,POST, PUT ,DELETE
+       GET=For retrieving the resource
+       POST=For creating the resource
+       PUT=Updating the resource
+       DELETE=deleteing the resource
+    4.Easy to read format
+
+
+    
+Django rest framework install:
+   pip install djangorestframework
+   pip install markdown
+   pip install django-filter
+
+   add 
+   'rest_framework' in installed app settings
+
+
+
+##Url endpoints
+   1.web Application endpoints==users can access it directly from the web browser
+      http://127.0.0.1:8000/students/==normal method for creation
+   2.Api endpoints=returns data to integrate to the frontend
+      http://127.0.0.1:8000/api/v1/students/== also similar
+

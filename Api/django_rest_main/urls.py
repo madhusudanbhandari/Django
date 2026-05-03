@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     ##web application endpoints
@@ -24,6 +25,6 @@ urlpatterns = [
 
 
     ##Api endpoints
-    path('api/v1/',include('api.urls'))
+    path('api/v1/',include('api.urls')),
 
 ]
