@@ -30,7 +30,7 @@ def studentsView(request):
 
 
 ##fetching the details of the single student using primary key
-@api_view(['GET'])   
+@api_view(['GET','PUT','DELETE'])   
 def studentDetailsView(request,pk):
     try:
         students=student.objects.get(pk=pk)
@@ -40,3 +40,17 @@ def studentDetailsView(request,pk):
     if request.method=='GET':
         serializer=StudentSerializer(students)
         return Response(serializer.data,status=status.HTTP_200_OK)
+    
+    elif request.method=='PUT':
+        serializer=StudentSerializer(students,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method=='DELETE':
+        students.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    
