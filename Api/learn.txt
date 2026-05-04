@@ -32,3 +32,32 @@ Django rest framework install:
    2.Api endpoints=returns data to integrate to the frontend
       http://127.0.0.1:8000/api/v1/students/== also similar
 
+
+##Fetching data=Manual Serialization
+  Serialization=taking data from the database and converting it into the list
+
+
+
+##Serialization and deserializaion
+   complex data => serializer => understandable data
+
+   ##serializer
+
+##primary key based operations
+
+c=POST
+r=GET
+u=PUT
+d=DELETE
+
+
+
+###Class Based Views
+      ==provide more structured and the organized way of handling the request using the oop principles
+      
+      use
+      path('employees', views.Employee.as_view())
+
+
+
+##MIXINS
