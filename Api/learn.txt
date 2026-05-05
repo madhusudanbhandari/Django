@@ -61,3 +61,26 @@ d=DELETE
 
 
 ##MIXINS
+
+mixins are the reusable code classed in oop that provide different functionalities
+
+in django rest framework mixins are used to add the functionalities to the views
+
+used in the class based views
+
+
+ 1.ListModelMixin==built in method==list()
+ 2.CreateModelMixin==create()
+ 3.RetrieveModelMixin==retrieve()
+ 4.UpdateModelMixin==update()
+ 5.DestroyModelMixin==destroy()
+
+ 
+
+
+##Generics
+   1.ListAPIView
+   2.CreateAPIView
+   3.UpdateAPIView
+   4.DestroyAPIView
+   5.RetrieveAPIView
