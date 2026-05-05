@@ -12,6 +12,7 @@ from blogs.models import Blog,Comment
 from blogs.serializers import BlogSerializer,CommentSerializer
 from .pagination import CustomPagination
 from .filters import EmployeeFilter
+from rest_framework.filters import SearchFilter,OrderingFilter
 
 @api_view(['GET','POST'])
 def studentsView(request):
@@ -197,6 +198,16 @@ class EmployeeViewSet(viewsets.ModelViewSet):
 class BlogsView(generics.ListCreateAPIView):
     queryset=Blog.objects.all()
     serializer_class=BlogSerializer
+
+    #search filter
+    filter_backends=[SearchFilter,OrderingFilter]
+    search_fields=['blog_title','blog_body']  ##for searching blog starting with use  '^blog_title' 
+
+
+    ###ordering_filters
+    ordering_fields=['id']
+
+
 
 class CommentsView(generics.ListCreateAPIView):
     queryset=Comment.objects.all()
