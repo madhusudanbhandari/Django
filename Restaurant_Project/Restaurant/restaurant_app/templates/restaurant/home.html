@@ -1,0 +1,187 @@
+{% extends 'restaurant/base.html' %}
+{% block title %}Mero Cafe — Home{% endblock %}
+{% block content %}
+
+<style>
+  .hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400') center/cover;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    color: var(--gold);
+    line-height: 1.1;
+  }
+  .hero p { font-size: 1.2rem; margin: 1rem 0 2rem; color: #ddd; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    padding: 0.8rem 2rem;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+  }
+  .btn-gold { background: var(--gold); color: var(--dark); }
+  .btn-gold:hover { background: #e6c060; transform: translateY(-2px); }
+  .btn-outline { border: 2px solid white; color: white; }
+  .btn-outline:hover { background: white; color: var(--dark); }
+
+  .section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .section-subtitle {
+    text-align: center;
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+  .feature-card {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+    transition: transform 0.3s;
+  }
+  .feature-card:hover { transform: translateY(-5px); }
+  .feature-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; }
+  .feature-card h3 { font-family: 'Playfair Display', serif; margin-bottom: 0.5rem; }
+  .feature-card p { color: var(--gray); font-size: 0.9rem; }
+
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+  .menu-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+  }
+  .menu-card:hover { transform: translateY(-5px); }
+  .menu-card img { width: 100%; height: 200px; object-fit: cover; }
+  .menu-card-body { padding: 1.2rem; }
+  .menu-card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+  .menu-card-body p { color: var(--gray); font-size: 0.85rem; margin: 0.5rem 0; }
+  .menu-card-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.8rem 1.2rem;
+    border-top: 1px solid #eee;
+  }
+  .price { color: var(--gold); font-weight: 700; font-size: 1.1rem; }
+  .badge {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .cta-section {
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200') center/cover;
+    padding: 6rem 2rem;
+    text-align: center;
+    color: white;
+  }
+  .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; color: #ddd; font-size: 1.1rem; }
+</style>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Fine Dining, <br>Unforgettable Moments</h1>
+  <p>Experience the art of cuisine in the heart of Kathmandu</p>
+  <div class="hero-btns">
+    <a href="{% url 'book_table' %}" class="btn btn-gold">Reserve a Table</a>
+    <a href="{% url 'menu' %}" class="btn btn-outline">View Menu</a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <p class="section-subtitle">Why Choose Us</p>
+  <h2 class="section-title">A Dining Experience Like No Other</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <i class="fas fa-utensils"></i>
+      <h3>Master Chefs</h3>
+      <p>Our chefs bring 20+ years of experience from world-class kitchens.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-leaf"></i>
+      <h3>Fresh Ingredients</h3>
+      <p>Only locally sourced, organic ingredients make it to your plate.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-wine-glass-alt"></i>
+      <h3>Fine Wines</h3>
+      <p>A curated selection of over 100 wines from around the globe.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-star"></i>
+      <h3>Award Winning</h3>
+      <p>Recognized as Kathmandu's best restaurant for 5 consecutive years.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED MENU -->
+{% if featured %}
+<section class="section" style="background: var(--light); max-width:100%; padding: 5rem 2rem;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <p class="section-subtitle">Taste the Best</p>
+    <h2 class="section-title">Featured Dishes</h2>
+    <div class="menu-grid">
+      {% for item in featured %}
+      <div class="menu-card">
+        {% if item.image %}
+          <img src="{{ item.image.url }}" alt="{{ item.name }}">
+        {% else %}
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="{{ item.name }}">
+        {% endif %}
+        <div class="menu-card-body">
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.description|truncatewords:15 }}</p>
+        </div>
+        <div class="menu-card-footer">
+          <span class="price">Rs. {{ item.price }}</span>
+          <span class="badge">{{ item.get_category_display }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="{% url 'menu' %}" class="btn btn-gold">See Full Menu</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to Dine With Us?</h2>
+  <p>Book your table now and enjoy an unforgettable evening</p>
+  <a href="{% url 'book_table' %}" class="btn btn-gold">Book a Table</a>
+</section>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'restaurant/base.html' %}
+{% block title %}My Bookings{% endblock %}
+{% block content %}
+<style>
+  .bookings-page { max-width: 800px; margin: 4rem auto; padding: 0 1.5rem; }
+  .bookings-page h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 2rem; }
+  .booking-card {
+    background: white; border-radius: 8px; padding: 1.5rem;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.07); margin-bottom: 1.2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .booking-info h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+  .booking-info p { color: var(--gray); font-size: 0.9rem; margin-top: 0.3rem; }
+  .booking-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .meta-item { text-align: center; }
+  .meta-item span { display: block; font-size: 0.75rem; color: var(--gray); text-transform: uppercase; }
+  .meta-item strong { color: var(--gold); font-size: 1rem; }
+  .btn-cancel {
+    background: #dc3545; color: white; border: none;
+    padding: 0.5rem 1.2rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;
+  }
+  .btn-cancel:hover { background: #c82333; }
+  .empty-state { text-align: center; padding: 4rem; color: var(--gray); }
+  .empty-state i { font-size: 3rem; color: #ddd; margin-bottom: 1rem; }
+  .btn-gold { background: var(--gold); color: var(--dark); padding: 0.7rem 1.5rem; text-decoration: none; border-radius: 4px; font-weight: 700; display: inline-block; margin-top: 1rem; }
+</style>
+<div class="bookings-page">
+  <h1>My Bookings</h1>
+  {% if bookings %}
+    {% for b in bookings %}
+    <div class="booking-card">
+      <div class="booking-info">
+        <h3>{{ b.name }}</h3>
+        <p>{{ b.email }} &bull; {{ b.phone }}</p>
+        {% if b.message %}<p style="margin-top:0.3rem;font-style:italic;">{{ b.message }}</p>{% endif %}
+      </div>
+      <div class="booking-meta">
+        <div class="meta-item"><span>Date</span><strong>{{ b.date }}</strong></div>
+        <div class="meta-item"><span>Time</span><strong>{{ b.time }}</strong></div>
+        <div class="meta-item"><span>Guests</span><strong>{{ b.guests }}</strong></div>
+      </div>
+      <a href="{% url 'cancel_booking' b.id %}" class="btn-cancel" onclick="return confirm('Cancel this booking?')">Cancel</a>
+    </div>
+    {% endfor %}
+  {% else %}
+    <div class="empty-state">
+      <i class="fas fa-calendar-times"></i>
+      <p>You have no bookings yet.</p>
+      <a href="{% url 'book_table' %}" class="btn-gold">Book a Table</a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'restaurant/base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<style>
+  .auth-page { max-width:450px; margin:5rem auto; padding:0 1.5rem; }
+  .auth-page h1 { font-family:'Playfair Display',serif; font-size:2.2rem; margin-bottom:.3rem; }
+  .auth-page .sub { color:var(--gold); letter-spacing:2px; text-transform:uppercase; font-size:.82rem; margin-bottom:2rem; }
+  .auth-card { background:white; padding:2.5rem; border-radius:10px; box-shadow:0 5px 25px rgba(0,0,0,.09); }
+  .form-group { margin-bottom:1.2rem; }
+  .form-group label { display:block; font-weight:700; font-size:.82rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:.4rem; }
+  .form-group input { width:100%; padding:.75rem 1rem; border:1.5px solid #ddd; border-radius:5px; font-size:.95rem; outline:none; transition:border-color .3s; }
+  .form-group input:focus { border-color:var(--gold); }
+  .btn-submit { width:100%; padding:1rem; background:var(--gold); color:var(--dark); font-size:1rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; border:none; border-radius:5px; cursor:pointer; transition:background .3s; }
+  .btn-submit:hover { background:#e6c060; }
+  .auth-link { text-align:center; margin-top:1.2rem; color:var(--gray); font-size:.9rem; }
+  .auth-link a { color:var(--gold); font-weight:700; text-decoration:none; }
+  .errorlist { color:#dc3545; font-size:.82rem; list-style:none; margin-top:.3rem; }
+</style>
+<div class="auth-page">
+  <h1>Welcome Back</h1>
+  <p class="sub">Sign in to your account</p>
+  <div class="auth-card">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group"><label>Username</label>{{ form.username }}{{ form.username.errors }}</div>
+      <div class="form-group"><label>Password</label>{{ form.password }}{{ form.password.errors }}</div>
+      {% if form.non_field_errors %}
+        <p style="color:#dc3545;font-size:.9rem;">{{ form.non_field_errors }}</p>
+      {% endif %}
+      <button type="submit" class="btn-submit">Login</button>
+    </form>
+    <p class="auth-link">Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+  </div>
+</div>
+{% endblock %}

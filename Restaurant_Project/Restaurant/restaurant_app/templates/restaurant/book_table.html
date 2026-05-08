@@ -1,0 +1,76 @@
+{% extends 'restaurant/base.html' %}
+{% block title %}Book a Table{% endblock %}
+{% block content %}
+<style>
+  .form-page { max-width: 650px; margin: 4rem auto; padding: 0 1.5rem; }
+  .form-page h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 0.3rem; }
+  .form-page .subtitle { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2rem; }
+  .form-card { background: white; padding: 2.5rem; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.09); }
+  .form-group { margin-bottom: 1.3rem; }
+  .form-group label { display: block; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; color: var(--dark); }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #ddd;
+    border-radius: 5px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
+    transition: border-color 0.3s; outline: none;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .btn-submit {
+    width: 100%; padding: 1rem; background: var(--gold); color: var(--dark);
+    font-size: 1rem; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s;
+  }
+  .btn-submit:hover { background: #e6c060; }
+  .errorlist { color: #dc3545; font-size: 0.82rem; margin-top: 0.3rem; list-style: none; }
+</style>
+<div class="form-page">
+  <h1>Book a Table</h1>
+  <p class="subtitle">Reserve your perfect dining experience</p>
+  <div class="form-card">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          {{ form.name }}
+          {{ form.name.errors }}
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          {{ form.email }}
+          {{ form.email.errors }}
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone</label>
+          {{ form.phone }}
+          {{ form.phone.errors }}
+        </div>
+        <div class="form-group">
+          <label>Guests</label>
+          {{ form.guests }}
+          {{ form.guests.errors }}
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date</label>
+          {{ form.date }}
+          {{ form.date.errors }}
+        </div>
+        <div class="form-group">
+          <label>Time</label>
+          {{ form.time }}
+          {{ form.time.errors }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Special Requests</label>
+        {{ form.message }}
+      </div>
+      <button type="submit" class="btn-submit">Confirm Reservation</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

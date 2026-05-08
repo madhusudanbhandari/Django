@@ -1,0 +1,50 @@
+{% extends 'restaurant/base.html' %}
+{% block title %}About Us{% endblock %}
+{% block content %}
+<style>
+  .about-hero {
+    background: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),
+                url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200') center/cover;
+    padding: 6rem 2rem; text-align: center; color: white;
+  }
+  .about-hero h1 { font-family:'Playfair Display',serif; font-size:3rem; color:var(--gold); }
+  .about-section { max-width:900px; margin:4rem auto; padding:0 1.5rem; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+  .about-grid img { width:100%; border-radius:10px; box-shadow:0 8px 30px rgba(0,0,0,0.15); }
+  .about-text h2 { font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:1rem; }
+  .about-text p { color:var(--gray); line-height:1.8; margin-bottom:1rem; }
+  .gold-line { width:50px; height:3px; background:var(--gold); margin-bottom:1rem; }
+  .team-section { background:var(--light); padding:5rem 2rem; text-align:center; }
+  .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; max-width:800px; margin:2rem auto 0; }
+  .team-card { background:white; padding:2rem 1rem; border-radius:8px; box-shadow:0 3px 15px rgba(0,0,0,0.07); }
+  .team-card i { font-size:3rem; color:var(--gold); margin-bottom:1rem; }
+  .team-card h3 { font-family:'Playfair Display',serif; }
+  .team-card p { color:var(--gray); font-size:0.85rem; }
+  @media(max-width:640px){ .about-grid{grid-template-columns:1fr;} }
+</style>
+<div class="about-hero">
+  <h1>Our Story</h1>
+  <p style="color:#ddd;margin-top:.5rem;">Passion on a plate since 2026</p>
+</div>
+<div class="about-section">
+  <div class="about-grid">
+    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600" alt="Our kitchen">
+    <div class="about-text">
+      <div class="gold-line"></div>
+      <h2>A Journey of Flavor</h2>
+      <p>Mero Caafe was born in 2026 with a simple dream — to bring world-class dining to the heart of Kathmandu. What started as a small 20-seat bistro has grown into the city's most celebrated fine dining destination.</p>
+      <p>Our philosophy is simple: respect the ingredient, trust the chef, delight the guest. Every dish on our menu tells a story of tradition, innovation, and love.</p>
+      <p>We source our produce directly from local farmers in the Kathmandu Valley, ensuring freshness you can taste in every single bite.</p>
+    </div>
+  </div>
+</div>
+<div class="team-section">
+  <p style="color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-size:.85rem;">The People Behind the Magic</p>
+  <h2 style="font-family:'Playfair Display',serif;font-size:2rem;margin-top:.3rem;">Meet Our Team</h2>
+  <div class="team-grid">
+    <div class="team-card"><i class="fas fa-user-tie"></i><h3>Chef Marco</h3><p>Head Chef, 20 years experience</p></div>
+    <div class="team-card"><i class="fas fa-user"></i><h3>Priya Sharma</h3><p>Pastry Chef & Dessert Artist</p></div>
+    <div class="team-card"><i class="fas fa-concierge-bell"></i><h3>Raj Thapa</h3><p>Head of Guest Experience</p></div>
+  </div>
+</div>
+{% endblock %}
