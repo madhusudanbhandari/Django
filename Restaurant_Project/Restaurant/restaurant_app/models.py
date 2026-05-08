@@ -7,7 +7,7 @@ class MenuItem(models.Model):
         CATEGORY_CHOICES=[
                 ('starter','Starter'),
                 ('main','Main Course'),
-                ('desert','Dessert'),
+                ('dessert','Dessert'),
                 ('drink','Drinks'),
         ]
 

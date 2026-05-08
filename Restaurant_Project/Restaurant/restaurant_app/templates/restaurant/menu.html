@@ -1,5 +1,5 @@
 {% extends 'restaurant/base.html' %}
-{% block title %}Our Menu — La Bella{% endblock %}
+{% block title %}Our Menu — Mero Cafe{% endblock %}
 {% block content %}
 
 <style>
@@ -89,22 +89,27 @@
   </div>
   {% else %}<p class="empty-msg">No main courses available right now.</p>{% endif %}
 
-  <h2 class="category-title">🍰 Desserts</h2>
+ <h2 class="category-title">🍰 Desserts</h2>
   {% if desserts %}
   <div class="menu-grid">
+    <p>{{desserts}}</p>
+        <p>{{desserts.count}}</p>
     {% for item in desserts %}
     <div class="menu-item">
       {% if item.image %}<img src="{{ item.image.url }}" alt="{{ item.name }}">
-      {% else %}<img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400" alt="dessert">{% endif %}
+      {% else %}<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="main">{% endif %}
       <div class="menu-item-body">
         <h3>{{ item.name }}</h3>
         <p>{{ item.description }}</p>
+        <p>{{desserts}}</p>
+        <p>{{desserts.count}}</p>
       </div>
       <div class="menu-item-footer">Rs. {{ item.price }}</div>
     </div>
     {% endfor %}
   </div>
   {% else %}<p class="empty-msg">No desserts available right now.</p>{% endif %}
+
 
   <h2 class="category-title">🍹 Drinks</h2>
   {% if drinks %}
