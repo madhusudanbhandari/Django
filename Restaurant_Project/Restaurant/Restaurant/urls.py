@@ -16,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
+from restaurant_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', views.homeView, name='home'),
+    path('about/', views.AboutView, name='about'),
+    path('menu/', views.MenuView, name='menu'),
+    path('book-table/', views.BookTableView, name='book-table')
+]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
