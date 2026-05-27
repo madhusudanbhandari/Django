@@ -92,8 +92,6 @@
  <h2 class="category-title">🍰 Desserts</h2>
   {% if desserts %}
   <div class="menu-grid">
-    <p>{{desserts}}</p>
-        <p>{{desserts.count}}</p>
     {% for item in desserts %}
     <div class="menu-item">
       {% if item.image %}<img src="{{ item.image.url }}" alt="{{ item.name }}">

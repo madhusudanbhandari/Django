@@ -79,8 +79,42 @@ used in the class based views
 
 
 ##Generics
+      ##these are used for all objects
    1.ListAPIView
    2.CreateAPIView
+
+   ##these are used for the specific object using the pk
    3.UpdateAPIView
    4.DestroyAPIView
    5.RetrieveAPIView
+
+##ListCreateAPIView
+##RetrieveUpdateAPIView
+##RetrieveUpdateDestroyAPIView
+
+
+
+
+
+
+##ViewSets
+
+viewsets.ViewSet==list,create,retrieve,update,delete
+
+viewsets.ModelViewSet==takes only the queryset and serializer_class and provides both the pk based and non-pk based operations
+
+
+
+
+##Nested serializer
+
+
+##Pagination
+      1.PageNumberPagination
+      2.LimitOffsetPagination
+
+      Global Pagination
+      Custom Pagination class
+
+
+##Filtering==filters the data
